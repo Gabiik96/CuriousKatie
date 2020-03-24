@@ -27,14 +27,11 @@ class ViewController: UIViewController {
         
         while index != pickedParticipants[0].interests.count{
             for participant in pickedParticipants {
-                print(participant.shareInterest(indexPath: index))
+            print(participant.shareInterest(indexPath: index))
             }
-            index += 1 
+        index += 1
         }
         
-         
-        
         CuriousKatie.matchPeople(participants: pickedParticipants)
-            
     }
 }

@@ -16,3 +16,11 @@ extension Array where Element: Hashable {
         return Array(thisSet.symmetricDifference(otherSet))
     }
 }
+
+
+extension Interest {
+    static func == (lhs: Interest, rhs: Interest) -> Bool {
+        return lhs.title == rhs.title
+    }
+}
+
