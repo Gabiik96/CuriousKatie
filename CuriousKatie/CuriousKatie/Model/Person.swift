@@ -25,12 +25,13 @@ struct Person {
         return introduction
     }
     
-    func shareInterest(indexPath: Int) -> String {
-        let sharedInterestTitle = interests[indexPath].title
-        let sharedInterestSkill = interests[indexPath].skill
-        
-        return "(\(name))My interest is " + sharedInterestTitle + ", I'm " + sharedInterestSkill.rawValue
-        
+    func shareInterest(indexPath: Int) -> Any {
+        if indexPath <= interests.count - 1{
+            let interest = interests[indexPath]
+            return name + "My interest is " + interest.title + ", I'm " + interest.skill.rawValue
+        } else {
+            return name + "All interests said"
+        }
     }
     
 
