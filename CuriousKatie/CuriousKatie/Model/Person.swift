@@ -40,7 +40,7 @@ struct Person {
         self.age = age
     }
     
-    static func generateParticipants() -> [Person] {
+    static var participants: [Person] {
         print("\n\n ..... Generating Participants ..... \n")
           
         return [
@@ -60,7 +60,7 @@ struct Person {
     }
     
     static func pickInterests() -> [Interest] {
-        let pool = Interest.possibleInterests.shuffled()
+        let pool = Interest.possibleInterests   .shuffled()
         let maximum = pool.count
         return Array(pool.prefix(Int.random(in: 1...maximum)))
     }
