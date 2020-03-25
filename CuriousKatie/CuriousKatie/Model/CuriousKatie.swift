@@ -20,16 +20,20 @@ struct CuriousKatie {
     
     static func matchPeople(participants: [Person]) {
         var peopleToMatch = participants.shuffled()
-        var matchIndex = 1
+        var matchIndex = 0
         while matchIndex <= (peopleToMatch.count - 1) {
             let interestsMatched = peopleToMatch.first?.interests.filter(peopleToMatch[matchIndex].interests.contains)
-            if peopleToMatch[matchIndex].name != peopleToMatch.first?.name && interestsMatched?.count ?? 0 >= 2 {
+            if peopleToMatch[matchIndex].name != peopleToMatch.first?.name && interestsMatched?.count ?? 0 >= interestsMatched?.count ?? 2 {
                 print("\(peopleToMatch.first?.name ?? "") is matching with \(peopleToMatch[matchIndex].name) with \(interestsMatched?.count ?? 0) common interests.")
                     peopleToMatch.remove(at: matchIndex)
                     peopleToMatch.removeFirst()
             } else {
             matchIndex += 1
             }
+        }
+        while 0 <= peopleToMatch.count - 1  {
+            print("\(peopleToMatch[0].name) has no suitable match.")
+            peopleToMatch.removeFirst()
         }
     }
 }
