@@ -61,7 +61,6 @@ struct Person {
     
     static func pickInterests() -> [Interest] {
         let pool = Interest.possibleInterests   .shuffled()
-        let maximum = pool.count
-        return Array(pool.prefix(Int.random(in: 1...maximum)))
+        return Array(pool.prefix(Int.random(in: 1...10)))
     }
 }
