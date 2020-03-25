@@ -14,7 +14,7 @@ enum Skill: String {
     case expert = "expert"
 }
 
-struct Interest: Equatable {
+struct Interest {
     
     var title: String
     var skill: Skill
@@ -53,3 +53,8 @@ struct Interest: Equatable {
     }
 }
 
+extension Interest: Equatable {
+    static func == (lhs: Interest, rhs: Interest) -> Bool {
+        return lhs.title == rhs.title
+    }
+}

@@ -18,9 +18,5 @@ extension Array where Element: Hashable {
 }
 
 
-extension Interest {
-    static func == (lhs: Interest, rhs: Interest) -> Bool {
-        return lhs.title == rhs.title
-    }
-}
+
 
