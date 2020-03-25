@@ -37,18 +37,6 @@ struct Interest {
             Interest(title: "surfing", skill: .proficient),
             Interest(title: "socialazing", skill: .novice),
             Interest(title: "watching TV", skill: .novice),
-            Interest(title: "gardening", skill: .novice),
-            Interest(title: "cooking", skill: .novice),
-            Interest(title: "investing", skill: .novice),
-            Interest(title: "sleeping", skill: .novice),
-            Interest(title: "cleaning", skill: .novice),
-            Interest(title: "dancing", skill: .novice),
-            Interest(title: "painting", skill: .novice),
-            Interest(title: "singing", skill: .novice),
-            Interest(title: "reading", skill: .novice),
-            Interest(title: "studying", skill: .novice),
-            Interest(title: "collecting pens", skill: .novice),
-            Interest(title: "blogging", skill: .novice)
         ]
     }
 }
