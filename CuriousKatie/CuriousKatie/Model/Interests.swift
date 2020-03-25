@@ -24,7 +24,7 @@ struct Interest {
         self.skill = skill
     }
     
-    static func generatePossibleInterests() -> [Interest] {
+    static var possibleInterests: [Interest] {
         print("\n\n ..... Generating Interests ..... \n")
         return [
             Interest(title: "swimming", skill: .expert),
