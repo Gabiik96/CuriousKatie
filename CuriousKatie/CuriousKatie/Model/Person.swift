@@ -15,7 +15,6 @@ struct Person {
     var name: String
     var age: Int
     var interests = pickInterests()
-    
 
     func introduce() -> String {
        
@@ -27,13 +26,12 @@ struct Person {
     
     func shareInterest(indexPath: Int) -> Any {
         if indexPath <= interests.count - 1{
-            let interest = interests[indexPath]
-            return name + "My interest is " + interest.title + ", I'm " + interest.skill.rawValue
+        let interest = interests[indexPath]
+        return "(\(name))" + "My interest is " + interest.title + ", I'm " + interest.skill.rawValue
         } else {
-            return name + "All interests said"
+            return "(\(name))" + "All interests said"
         }
     }
-    
 
     init(name: String, age: Int) {
         self.name = name
@@ -42,8 +40,7 @@ struct Person {
     
     static var people: [Person] {
         print("\n\n ..... Generating Participants ..... \n")
-          
-        return [
+          return [
             Person(name: "Jonathan", age: 48),
             Person(name: "Julia", age: 37),
             Person(name: "Peter", age: 40),
@@ -60,7 +57,7 @@ struct Person {
     }
     
     static func pickInterests() -> [Interest] {
-        let pool = Interest.possibleInterests   .shuffled()
+        let pool = Interest.possibleInterests.shuffled()
         return Array(pool.prefix(Int.random(in: 1...10)))
     }
 }

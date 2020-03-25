@@ -15,19 +15,17 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         let pickedParticipants = CuriousKatie.chooseParticipants()
-            
 
         for participant in pickedParticipants {
             print(participant.introduce())
             print("\n")
         }
         
-        
         var index = 0
         
         while index != pickedParticipants[0].interests.count{
             for participant in pickedParticipants {
-            print(participant.shareInterest(indexPath: index))
+                print(participant.shareInterest(indexPath: index))
             }
         index += 1
         }

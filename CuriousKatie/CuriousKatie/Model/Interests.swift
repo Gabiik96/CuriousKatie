@@ -25,7 +25,6 @@ struct Interest {
     }
     
     static var possibleInterests: [Interest] {
-        print("\n\n ..... Generating Interests ..... \n")
         return [
             Interest(title: "swimming", skill: .expert),
             Interest(title: "running", skill: .novice),
