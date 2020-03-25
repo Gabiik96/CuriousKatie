@@ -12,7 +12,7 @@ import Foundation
 struct CuriousKatie {
         
     static func chooseParticipants() -> [Person] {
-        let pool = Person.participants.shuffled()
+        let pool = Person.people.shuffled()
         let maximum = pool.count
         print("\n\n ..... Choosing Participants ..... \n")
         return Array(pool.prefix(Int.random(in: 2...maximum)))

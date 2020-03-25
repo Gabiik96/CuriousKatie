@@ -40,7 +40,7 @@ struct Person {
         self.age = age
     }
     
-    static var participants: [Person] {
+    static var people: [Person] {
         print("\n\n ..... Generating Participants ..... \n")
           
         return [
