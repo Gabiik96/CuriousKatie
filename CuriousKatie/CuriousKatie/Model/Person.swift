@@ -12,10 +12,12 @@ import Foundation
 
 struct Person {
     
+    // properties
     var name: String
     var age: Int
     var interests = pickInterests()
 
+    // function to intruduce participant by generating introduction
     func introduce() -> String {
        
         let greetings = ["Hello everybody, I'm ", "Hi all, my name is", "Hey there, they call me"]
@@ -24,20 +26,21 @@ struct Person {
         return introduction
     }
     
-    func shareInterest(indexPath: Int) -> Any {
-        if indexPath <= interests.count - 1{
-        let interest = interests[indexPath]
-        return "(\(name))" + "My interest is " + interest.title + ", I'm " + interest.skill.rawValue
-        } else {
-            return "(\(name))" + "All interests said"
+    // function to share interest of participant || if there are no interests left, to say all interests said
+    func shareInterest(indexPath: Int) {
+        if indexPath <= interests.count - 1 {
+            let interest = interests[indexPath]
+            print("(\(name))" + "My interest is " + interest.title + ", I'm " + interest.skill.rawValue)
         }
     }
 
+    // initializer
     init(name: String, age: Int) {
         self.name = name
         self.age = age
     }
     
+    // computed property to generate participants
     static var people: [Person] {
         print("\n\n ..... Generating Participants ..... \n")
           return [
@@ -56,6 +59,7 @@ struct Person {
             ]
     }
     
+    // function to populate participant with random quantity of random possible interests
     static func pickInterests() -> [Interest] {
         let pool = Interest.possibleInterests.shuffled()
         return Array(pool.prefix(Int.random(in: 1...10)))

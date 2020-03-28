@@ -9,6 +9,7 @@
 import Foundation
 
 enum Skill: String {
+    //enumeration for skill property of Interest
     case novice = "novice"
     case proficient = "proficient"
     case expert = "expert"
@@ -16,14 +17,17 @@ enum Skill: String {
 
 struct Interest {
     
+    // propertes
     var title: String
     var skill: Skill
     
+    // initializer
     init(title: String, skill: Skill) {
         self.title = title
         self.skill = skill
     }
     
+    // computed variable to generate possible interests
     static var possibleInterests: [Interest] {
         return [
             Interest(title: "swimming", skill: .expert),
