@@ -14,21 +14,36 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        let pickedParticipants = CuriousKatie.chooseParticipants()
-
+        // declaration of current participants
+        var pickedParticipants = CuriousKatie.chooseParticipants()
+        
+        // each participant will introduce
         for participant in pickedParticipants {
             print(participant.introduce())
-            print("\n")
+            
         }
-        
+        print("\n")
         var index = 0
         
-        while index != pickedParticipants[0].interests.count{
-            for participant in pickedParticipants {
-                print(participant.shareInterest(indexPath: index))
-            }
-        index += 1
+        var numberOfInterests = [Int]()
+        
+        // populating array with each participant quantity of interests
+        for participant in pickedParticipants {
+            numberOfInterests.append(participant.interests.count)
         }
+        
+        // picking out the highest number from array
+        let highestNumber = numberOfInterests.reduce(Int.min, { max($0, $1)})
+        
+        // while loop sharing all interests of each participant(only one at the time)
+        while index != highestNumber {
+            pickedParticipants.shuffle()
+            for participant in pickedParticipants {
+                participant.shareInterest(indexPath: index)
+            }
+            index += 1
+        }
+        print("\n")
         
         CuriousKatie.matchPeople(participants: pickedParticipants)
     }
