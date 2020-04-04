@@ -10,122 +10,99 @@ import Foundation
 
 
 struct CuriousKatie {
-    
-    static func generatePossibleInterests() -> [Interest] {
-        print("\n\n ..... Generating Interests ..... \n")
-        var allInterests: [Interest] = []
         
-        let interest1 = Interest(title: "swimming", skill: .expert)
-        allInterests.append(interest1)
-        let interest2 = Interest(title: "running", skill: .novice)
-        allInterests.append(interest2)
-        let interest3 = Interest(title: "programming", skill: .proficient)
-        allInterests.append(interest3)
-        let interest4 = Interest(title: "snowboarding", skill: .expert)
-        allInterests.append(interest4)
-        let interest5 = Interest(title: "skydiving", skill: .proficient)
-        allInterests.append(interest5)
-        let interest6 = Interest(title: "racing", skill: .novice)
-        allInterests.append(interest6)
-        let interest7 = Interest(title: "cycling", skill: .expert)
-        allInterests.append(interest7)
-        let interest8 = Interest(title: "surfing", skill: .proficient)
-        allInterests.append(interest8)
-        let interest9 = Interest(title: "socialazing", skill: .novice)
-        allInterests.append(interest9)
-        let interest10 = Interest(title: "watching TV", skill: .novice)
-        allInterests.append(interest10)
-        let interest11 = Interest(title: "gardening", skill: .novice)
-        allInterests.append(interest11)
-        let interest12 = Interest(title: "cooking", skill: .novice)
-        allInterests.append(interest12)
-        let interest13 = Interest(title: "investing", skill: .novice)
-        allInterests.append(interest13)
-        let interest14 = Interest(title: "sleeping", skill: .novice)
-        allInterests.append(interest14)
-        let interest15 = Interest(title: "cleaning", skill: .novice)
-        allInterests.append(interest15)
-        let interest16 = Interest(title: "dancing", skill: .novice)
-        allInterests.append(interest16)
-        let interest17 = Interest(title: "painting", skill: .novice)
-        allInterests.append(interest17)
-        let interest18 = Interest(title: "singing", skill: .novice)
-        allInterests.append(interest18)
-        let interest19 = Interest(title: "reading", skill: .novice)
-        allInterests.append(interest19)
-        let interest20 = Interest(title: "studying", skill: .novice)
-        allInterests.append(interest20)
-        let interest21 = Interest(title: "collecting pens", skill: .novice)
-        allInterests.append(interest21)
-        let interest22 = Interest(title: "blogging", skill: .novice)
-        allInterests.append(interest22)
-        
-        
-        return allInterests
-    }
-    
- 
-    static func generateParticipants() -> [Person] {
-        print("\n\n ..... Generating Participants ..... \n")
-        var participants: [Person] = []
-        
-        let participant1 = Person(name: "Jonathan", age: 48)
-        participants.append(participant1)
-        let participant2 = Person(name: "Julia", age: 37)
-        participants.append(participant2)
-        let participant3 = Person(name: "Peter", age: 40)
-        participants.append(participant3)
-        let participant4 = Person(name: "Reynold", age: 29)
-        participants.append(participant4)
-        let participant5 = Person(name: "Bianca", age: 36)
-        participants.append(participant5)
-        let participant6 = Person(name: "Garry", age: 42)
-        participants.append(participant6)
-        let participant7 = Person(name: "Nataly", age: 31)
-        participants.append(participant7)
-        let participant8 = Person(name: "Chloe", age: 52)
-        participants.append(participant8)
-        let participant9 = Person(name: "Sophie", age: 22)
-        participants.append(participant9)
-        let participant10 = Person(name: "Paul", age: 51)
-        participants.append(participant10)
-        let participant11 = Person(name: "Anna", age: 34)
-        participants.append(participant11)
-        let participant12 = Person(name: "Robert", age: 26)
-        participants.append(participant12)
-        
-        return participants
-    }
-    
-
+    // function to randomly choosing random number of participants
     static func chooseParticipants() -> [Person] {
-        print("\n\n ..... Choosing Participants ..... \n")
-        let pool = generateParticipants().shuffled()
+        let pool = Person.people.shuffled()
         let maximum = pool.count
+        print("\n\n ..... Choosing Participants ..... \n")
         return Array(pool.prefix(Int.random(in: 2...maximum)))
     }
     
-
-    static func pickInterests() -> [Interest] {
-        let pool = generatePossibleInterests().shuffled()
-        let maximum = pool.count
-        return Array(pool.prefix(Int.random(in: 1...maximum)))
+    
+    static func printMatches(matches: [String]) {
+        for element in matches {
+            print(element)
+            }
+            print("\n")
     }
     
+    // main function to match current participants
     static func matchPeople(participants: [Person]) {
         
+        // function to print all matches in array of matches
+        func printMatches(matches: [String]) {
+             for element in matches {
+                 print(element)
+                 }
+                 print("\n")
+         }
+        
+        // function which adds string to array if person are matching & removes participants which matched from pool
+        func addIfMatch(array:inout [String], matchPerson: Person, participant: Person, interestsMatched: [Interest], people:inout [Person], string: String ) {
+            array.append(string)
+            people.removeAll { (person) -> Bool in
+                if person.name == participant.name {
+                    return true
+                } else {
+                    return false
+                }
+            }
+            people.remove(at: 0)
+        }
+        
+        // arrays to store matches
+        var strongMatches = [String]()
+        var weakMatches = [String]()
+        var oneMatches = [String]()
+        var noMatches = [String]()
+        
+        // randomize participants order
         var peopleToMatch = participants.shuffled()
-               var matchIndex = 1
-               while matchIndex <= (peopleToMatch.count - 1) {
-                let interestMached = peopleToMatch.first?.interests.filter(peopleToMatch[matchIndex].interests.contains)
-                       if peopleToMatch[matchIndex].name != peopleToMatch.first?.name && interestMached?.count ?? 0 >= 2 {
-                           print("\(peopleToMatch.first?.name ?? "") is matching with \(peopleToMatch[matchIndex].name) with \(interestMached?.count ?? 0) common interests.")
-                        peopleToMatch.remove(at: matchIndex)
-                        peopleToMatch.removeFirst()
-                       }
-                       else {
-                           matchIndex += 1
-                       }
-                   }
-               }
+        
+        var matchIndex = 0
+        
+        // while loop matching participants which have same interests
+        while matchIndex <= (peopleToMatch.count - 1) {
+            for participant in peopleToMatch {
+                //to this participant we are comparing others interest
+                let matchingPerson = peopleToMatch[0]
+                //this is comparing participant
+                let participant = participant
+                // storing all interests which are matching (matchingPerson.interests to participant.interests)
+                let interestsMatched = matchingPerson.interests.filter(participant.interests.contains)
+                // condition searching for matches with 4 or more common interests
+                if participant.name != matchingPerson.name && interestsMatched.count >= 4 {
+                    addIfMatch(array: &strongMatches, matchPerson: matchingPerson, participant: participant, interestsMatched: interestsMatched, people: &peopleToMatch, string: "\(matchingPerson.name ) is strong match with \(participant.name) with \(interestsMatched.count) common interests.")
+                    matchIndex = 0
+                }
+                // condition searching for matches with 2 or more common interests
+                else if participant.name != matchingPerson.name && interestsMatched.count >= 2 {
+                    addIfMatch(array: &weakMatches, matchPerson: matchingPerson, participant: participant, interestsMatched: interestsMatched, people: &peopleToMatch, string: "\(matchingPerson.name ) is match with \(participant.name) with \(interestsMatched.count) common interests.")
+                    matchIndex = 0
+                }
+                // condition searching for matches with 1 common interests
+                else if participant.name != matchingPerson.name && interestsMatched.count >= 1 {
+                    addIfMatch(array: &oneMatches, matchPerson: matchingPerson, participant: participant, interestsMatched: interestsMatched, people: &peopleToMatch, string: "\(matchingPerson.name ) is match with \(participant.name) with \(interestsMatched.count) common interest.")
+                matchIndex = 0
+                }
+                // if there no match in those two going making index higher to go to another person
+                else {
+                    matchIndex += 1
+                }
+            }
+        }
+        
+        matchIndex = 0
+        // participants which are left in array(dont have match for them - everybody else is already paired)
+        while 0 <= peopleToMatch.count - 1  {
+            noMatches.append("\(peopleToMatch[0].name) has no suitable match.")
+            peopleToMatch.removeFirst()
+        }
+        
+        printMatches(matches: strongMatches)
+        printMatches(matches: weakMatches)
+        printMatches(matches: oneMatches)
+        printMatches(matches: noMatches)
     }
+}
