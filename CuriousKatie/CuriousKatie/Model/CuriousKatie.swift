@@ -28,7 +28,7 @@ struct CuriousKatie {
     }
     
     // main function to match current participants
-    static func matchPeople(participants: [Person]) {
+    static func matchPeople(participants: [Person]) -> [String] {
         
         // function to print all matches in array of matches
         func printMatches(matches: [String]) {
@@ -63,7 +63,6 @@ struct CuriousKatie {
         var matchIndex = 0
         
         // while loop matching participants which have same interests
-        while matchIndex <= (peopleToMatch.count - 1) {
             for participant in peopleToMatch {
                 //to this participant we are comparing others interest
                 let matchingPerson = peopleToMatch[0]
@@ -91,7 +90,7 @@ struct CuriousKatie {
                     matchIndex += 1
                 }
             }
-        }
+
         
         matchIndex = 0
         // participants which are left in array(dont have match for them - everybody else is already paired)
@@ -100,9 +99,12 @@ struct CuriousKatie {
             peopleToMatch.removeFirst()
         }
         
+       
+        
         printMatches(matches: strongMatches)
         printMatches(matches: weakMatches)
         printMatches(matches: oneMatches)
         printMatches(matches: noMatches)
+         return noMatches
     }
 }

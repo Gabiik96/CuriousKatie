@@ -15,7 +15,7 @@ struct Person {
     // properties
     var name: String
     var age: Int
-    var interests = pickInterests()
+    var interests: [Interest]
 
     // function to intruduce participant by generating introduction
     func introduce() -> String {
@@ -35,9 +35,10 @@ struct Person {
     }
 
     // initializer
-    init(name: String, age: Int) {
+    init(name: String, age: Int, interest: [Interest] = pickInterests()) {
         self.name = name
         self.age = age
+        self.interests = interest
     }
     
     // computed property to generate participants
