@@ -62,7 +62,6 @@ struct Person {
     
     // function to populate participant with random quantity of random possible interests
     static func pickInterests() -> [Interest] {
-        let pool = Interest.possibleInterests.shuffled()
-        return Array(pool.prefix(Int.random(in: 1...10)))
+        return Array(Interest.possibleInterests().shuffled().prefix(Int.random(in: 1...Interest.possibleInterests().count)))
     }
 }

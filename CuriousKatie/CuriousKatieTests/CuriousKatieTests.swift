@@ -19,7 +19,7 @@ class CuriousKatieTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-      /// When there is an odd number -> remaining person will not get paired up
+    /// When there is an odd number -> remaining person will not get paired up
     func testOddNumberOfParticipants() {
         var people: [Person] =   [Person(name: "Jonathan", age: 48, interest: Interest.possibleInterests),
                                   Person(name: "Julia", age: 37, interest: Interest.possibleInterests),
@@ -27,7 +27,11 @@ class CuriousKatieTests: XCTestCase {
                                   Person(name: "Reynold", age: 29, interest: Interest.possibleInterests),
                                   Person(name: "Bianca", age: 36, interest: Interest.possibleInterests),]
         
-        XCTAssert(CuriousKatie.matchPeople(participants: people).isEmpty, "Odd number of participants should leave one person out.")
+        XCTAssert(!CuriousKatie.matchPeople(participants: people).isEmpty, "Odd number of participants should leave one person out.")
+    }
+    /// Nobody who is supposed to get matched get skipped
+    func test() {
+        
     }
 
     func testPerformanceExample() {
