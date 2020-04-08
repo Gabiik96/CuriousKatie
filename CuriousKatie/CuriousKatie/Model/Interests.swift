@@ -27,7 +27,7 @@ struct Interest {
         self.skill = skill
     }
     
-    // computed variable to generate possible interests
+    // function to generate possible interests
     static func possibleInterests() -> [Interest] {
         return [
             Interest(title: "swimming", skill: Skill.allCases.randomElement()!),
