@@ -28,7 +28,7 @@ struct CuriousKatie {
     }
     
     // main function to match current participants
-    static func matchPeople(participants: [Person]) {
+    static func matchPeople(participants: [Person]) -> [String] {
         
         // function to print all matches in array of matches
         func printMatches(matches: [String]) {
@@ -60,11 +60,10 @@ struct CuriousKatie {
         // randomize participants order
         var peopleToMatch = participants.shuffled()
         
-        var matchIndex = 0
         
-        // while loop matching participants which have same interests
-        while matchIndex <= (peopleToMatch.count - 1) {
+        // matching participants which have same interests
             for participant in peopleToMatch {
+                peopleToMatch.shuffle()
                 //to this participant we are comparing others interest
                 let matchingPerson = peopleToMatch[0]
                 //this is comparing participant
@@ -74,26 +73,17 @@ struct CuriousKatie {
                 // condition searching for matches with 4 or more common interests
                 if participant.name != matchingPerson.name && interestsMatched.count >= 4 {
                     addIfMatch(array: &strongMatches, matchPerson: matchingPerson, participant: participant, interestsMatched: interestsMatched, people: &peopleToMatch, string: "\(matchingPerson.name ) is strong match with \(participant.name) with \(interestsMatched.count) common interests.")
-                    matchIndex = 0
                 }
                 // condition searching for matches with 2 or more common interests
                 else if participant.name != matchingPerson.name && interestsMatched.count >= 2 {
                     addIfMatch(array: &weakMatches, matchPerson: matchingPerson, participant: participant, interestsMatched: interestsMatched, people: &peopleToMatch, string: "\(matchingPerson.name ) is match with \(participant.name) with \(interestsMatched.count) common interests.")
-                    matchIndex = 0
                 }
                 // condition searching for matches with 1 common interests
                 else if participant.name != matchingPerson.name && interestsMatched.count >= 1 {
                     addIfMatch(array: &oneMatches, matchPerson: matchingPerson, participant: participant, interestsMatched: interestsMatched, people: &peopleToMatch, string: "\(matchingPerson.name ) is match with \(participant.name) with \(interestsMatched.count) common interest.")
-                matchIndex = 0
-                }
-                // if there no match in those two going making index higher to go to another person
-                else {
-                    matchIndex += 1
                 }
             }
-        }
-        
-        matchIndex = 0
+
         // participants which are left in array(dont have match for them - everybody else is already paired)
         while 0 <= peopleToMatch.count - 1  {
             noMatches.append("\(peopleToMatch[0].name) has no suitable match.")
@@ -104,5 +94,7 @@ struct CuriousKatie {
         printMatches(matches: weakMatches)
         printMatches(matches: oneMatches)
         printMatches(matches: noMatches)
+        
+        return noMatches
     }
 }

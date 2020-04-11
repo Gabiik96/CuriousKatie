@@ -15,7 +15,7 @@ struct Person {
     // properties
     var name: String
     var age: Int
-    var interests = pickInterests()
+    var interests: [Interest]
 
     // function to intruduce participant by generating introduction
     func introduce() -> String {
@@ -35,9 +35,10 @@ struct Person {
     }
 
     // initializer
-    init(name: String, age: Int) {
+    init(name: String, age: Int, interest: [Interest] = pickInterests()) {
         self.name = name
         self.age = age
+        self.interests = interest
     }
     
     // computed property to generate participants
@@ -61,7 +62,6 @@ struct Person {
     
     // function to populate participant with random quantity of random possible interests
     static func pickInterests() -> [Interest] {
-        let pool = Interest.possibleInterests.shuffled()
-        return Array(pool.prefix(Int.random(in: 1...10)))
+        return Array(Interest.possibleInterests().shuffled().prefix(Int.random(in: 1...Interest.possibleInterests().count)))
     }
 }
