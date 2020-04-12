@@ -16,17 +16,17 @@ class ViewController: UIViewController {
         
         // declaration of current participants
         var pickedParticipants = CuriousKatie.chooseParticipants()
+        print("Today we have \(pickedParticipants.count) participants.\n")
         
         // each participant will introduce
         for participant in pickedParticipants {
             print(participant.introduce())
-            
         }
-        print("\n")
-        var index = 0
         
+        var index = 0
         var numberOfInterests = [Int]()
         
+        print("\n")
         // populating array with each participant quantity of interests
         for participant in pickedParticipants {
             numberOfInterests.append(participant.interests.count)

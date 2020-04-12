@@ -30,7 +30,11 @@ struct Person {
     func shareInterest(indexPath: Int) {
         if indexPath <= interests.count - 1 {
             let interest = interests[indexPath]
-            print("(\(name))" + "My interest is " + interest.title + ", I'm " + interest.skill.rawValue)
+            if let skill = interest.skill {
+                print("(\(name)) My interest is  \(interest.title), I'm \(skill)")
+            } else {
+                print("(\(name)) My interest is \(interest.title).")
+            }
         }
     }
 
@@ -62,6 +66,14 @@ struct Person {
     
     // function to populate participant with random quantity of random possible interests
     static func pickInterests() -> [Interest] {
-        return Array(Interest.possibleInterests().shuffled().prefix(Int.random(in: 1...Interest.possibleInterests().count)))
-    }
+            let array = Array(Interest.possibleInterests().shuffled().prefix(Int.random(in: 1...Interest.possibleInterests().count)))
+            let skills = ["novice","proficient","expert"]
+            for interest in array {
+                let randomNumber = Int.random(in: 1...20)
+                if randomNumber <= 10 {
+                    interest.skill = skills.randomElement()
+                }
+            }
+            return array
+        }
 }

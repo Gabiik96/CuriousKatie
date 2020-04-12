@@ -8,21 +8,14 @@
 
 import Foundation
 
-enum Skill: String, CaseIterable {
-    //enumeration for skill property of Interest
-    case novice = "novice"
-    case proficient = "proficient"
-    case expert = "expert"
-}
-
-struct Interest {
+class Interest {
     
     // propertes
     var title: String
-    var skill: Skill
+    var skill: String?
     
     // initializer
-    init(title: String, skill: Skill) {
+    init(title: String, skill: String? = nil) {
         self.title = title
         self.skill = skill
     }
@@ -30,16 +23,16 @@ struct Interest {
     // function to generate possible interests
     static func possibleInterests() -> [Interest] {
         return [
-            Interest(title: "swimming", skill: Skill.allCases.randomElement()!),
-            Interest(title: "running", skill: Skill.allCases.randomElement()!),
-            Interest(title: "programming", skill: Skill.allCases.randomElement()!),
-            Interest(title: "snowboarding", skill: Skill.allCases.randomElement()!),
-            Interest(title: "skydiving", skill: Skill.allCases.randomElement()!),
-            Interest(title: "racing", skill: Skill.allCases.randomElement()!),
-            Interest(title: "cycling", skill: Skill.allCases.randomElement()!),
-            Interest(title: "surfing", skill: Skill.allCases.randomElement()!),
-            Interest(title: "socialazing", skill: Skill.allCases.randomElement()!),
-            Interest(title: "watching TV", skill: Skill.allCases.randomElement()!),
+            Interest(title: "swimming"),
+            Interest(title: "running"),
+            Interest(title: "programming"),
+            Interest(title: "snowboarding"),
+            Interest(title: "skydiving"),
+            Interest(title: "racing"),
+            Interest(title: "cycling"),
+            Interest(title: "surfing"),
+            Interest(title: "socialazing"),
+            Interest(title: "watching TV")
         ]
     }
 }
