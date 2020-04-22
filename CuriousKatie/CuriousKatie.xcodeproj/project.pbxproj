@@ -39,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		42087E8E2450E21E00940056 /* CuriousKatiePlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = CuriousKatiePlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		42D0F4A524280BCB0054A4F6 /* CuriousKatie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CuriousKatie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42D0F4A824280BCB0054A4F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42D0F4AA24280BCB0054A4F6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +88,7 @@
 		42D0F49C24280BCB0054A4F6 = {
 			isa = PBXGroup;
 			children = (
+				42087E8E2450E21E00940056 /* CuriousKatiePlayground.playground */,
 				42D0F4A724280BCB0054A4F6 /* CuriousKatie */,
 				42D0F4BE24280BCD0054A4F6 /* CuriousKatieTests */,
 				42D0F4C924280BCD0054A4F6 /* CuriousKatieUITests */,
